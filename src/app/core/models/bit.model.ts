@@ -27,5 +27,11 @@ export type Solidity =
 export type Shine = 'shine' | 'blaze' | 'halo';
 
 export interface Bit {
-  name: string;
+  image: string;
+  attributes: BitParam[];
+}
+
+interface BitParam {
+  trait_type: string;
+  value: string;
 }

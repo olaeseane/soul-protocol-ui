@@ -1,24 +1,11 @@
 <div class="received-bits">
   <div class="received-bits__filters">ФИЛЬТРЫ</div>
 
-  <!--  PEPEGA: {{ soulItems$ | async }}-->
-
   <div class="received-bits__list">
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
-    <sw-bit class="bit"></sw-bit>
+    <sw-bit
+      class="bit"
+      *ngFor="let bitId of bitsIds$ | async"
+      [bitId]="bitId"
+    ></sw-bit>
   </div>
 </div>

@@ -8,7 +8,7 @@ import { HomeService } from '../../services/home.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReceivedBitsComponent implements OnInit {
-  bits$ = this.dataService.getBits();
+  bitsIds$ = this.dataService.getReceivedBitsIds();
 
   constructor(private readonly dataService: HomeService) {}
 

@@ -29,8 +29,8 @@ export class BitsOfSoulTabsComponent implements OnInit {
   );
 
   activeItemIndex = 0;
-  receivedQuantity$ = this.dataService.getReceivedQuantity().pipe(startWith(0));
-  sendQuantity$ = this.dataService.getSendQuantity().pipe(startWith(0));
+  receivedQuantity$ = this.dataService.getReceivedBitsIds().pipe(startWith([]));
+  sendQuantity$ = this.dataService.getReceivedBitsIds().pipe(startWith([]));
 
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,

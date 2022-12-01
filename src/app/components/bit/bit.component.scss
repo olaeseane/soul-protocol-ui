@@ -5,7 +5,6 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  border: 2px solid var(--sw-accent);
   border: 2px solid var(--sw-primary);
 
   &__image {
@@ -20,18 +19,16 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    //border-top: 2px solid var(--sw-accent);
     font-weight: 600;
-    background: var(--sw-light-primary);
     background: var(--sw-primary);
   }
 
   &__params {
+    min-height: 156px;
     background: white;
     display: flex;
     flex-direction: column;
     gap: 4px;
     padding: 8px;
-    //border: 2px solid var(--sw-primary);
   }
 }

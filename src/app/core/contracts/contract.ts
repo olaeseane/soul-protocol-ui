@@ -185,7 +185,7 @@ export const ABI_CONTRACT = [
     name: 'fetchSenderTokens',
     outputs: [
       {
-        internalType: 'uint256[]',
+        internalType: 'uint256[]', // массив id токена (tokeId) received
         name: '',
         type: 'uint256[]',
       },
@@ -396,16 +396,6 @@ export const ABI_CONTRACT = [
           {
             internalType: 'string',
             name: 'shining',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'rarity',
-            type: 'string',
-          },
-          {
-            internalType: 'string',
-            name: 'era',
             type: 'string',
           },
         ],
@@ -643,7 +633,7 @@ export const ABI_CONTRACT = [
   {
     inputs: [
       {
-        internalType: 'uint256',
+        internalType: 'uint256', // сюда кидаем tokeId
         name: 'id',
         type: 'uint256',
       },
@@ -652,7 +642,7 @@ export const ABI_CONTRACT = [
     outputs: [
       {
         internalType: 'string',
-        name: '',
+        name: '', // это неизвестный json объект, там будут лежать:
         type: 'string',
       },
     ],

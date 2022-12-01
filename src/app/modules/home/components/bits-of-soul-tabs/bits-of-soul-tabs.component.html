@@ -6,7 +6,7 @@
         <tui-badge
           class="tui-space_left-2"
           status="info"
-          [value]="receivedQuantity$ | async"
+          [value]="(receivedQuantity$ | async)?.length"
           size="xs"
         ></tui-badge>
       </button>
@@ -15,7 +15,7 @@
         <tui-badge
           class="tui-space_left-2"
           status="info"
-          [value]="sendQuantity$ | async"
+          [value]="(sendQuantity$ | async)?.length"
           size="xs"
         ></tui-badge>
       </button>
