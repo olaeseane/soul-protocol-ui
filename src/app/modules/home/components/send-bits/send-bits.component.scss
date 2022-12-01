@@ -1,0 +1,35 @@
+.send-bits {
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__form {
+    margin-top: 16px;
+    display: flex;
+    gap: 20px;
+  }
+
+  &__preview {
+    width: 200px;
+    border: 2px solid var(--sw-dark-primary);
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1;
+  }
+
+  &__params {
+    display: grid;
+    margin-top: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  &__shine {
+    margin-top: 16px;
+  }
+}

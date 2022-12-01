@@ -1,0 +1,33 @@
+.bit {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  border: 2px solid var(--sw-accent);
+
+  &__image {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__address {
+    padding: 8px;
+    //border: 2px solid var(--sw-primary);
+    font-weight: 600;
+    background: white;
+  }
+
+  &__params {
+    background: var(--sw-light-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    //border: 2px solid var(--sw-primary);
+  }
+}

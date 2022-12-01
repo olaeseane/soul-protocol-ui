@@ -1,0 +1,11 @@
+.tabs {
+  padding: 0 22px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    tui-tabs {
+      flex: 1 1;
+    }
+  }
+}

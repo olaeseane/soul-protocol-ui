@@ -1,0 +1,22 @@
+<div class="tabs">
+  <div class="tabs__header">
+    <tui-tabs [(activeItemIndex)]="activeItemIndex" [underline]="true">
+      <button tuiTab>Received</button>
+      <button tuiTab>Send</button>
+    </tui-tabs>
+
+    <button
+      tuiButton
+      type="button"
+      size="m"
+      iconRight="tuiIconRedoLarge"
+      appearance="accent"
+      (click)="sendBits()"
+    >
+      Send bits
+    </button>
+  </div>
+
+  <sw-received-bits *ngIf="activeItemIndex === 0"></sw-received-bits>
+  <sw-sent-bits *ngIf="activeItemIndex === 1"></sw-sent-bits>
+</div>

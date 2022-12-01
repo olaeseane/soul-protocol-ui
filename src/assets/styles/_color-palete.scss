@@ -1,0 +1,50 @@
+@import "~@taiga-ui/core/styles/taiga-ui-local";
+
+// base colors example https://taiga-ui.dev/colors/Base_palette
+
+:root {
+  --sw-base-white: #fff;
+  --sw-dark-primary: #0288d1;
+  --sw-light-primary: #b3e5fc;
+  --sw-primary: #03a9f4;
+  --sw-accent: #3c58fd;
+  --sw-primary-text: #212121;
+  --sw-secondary-text: #757575;
+  --sw-divider: #bdbdbd;
+
+  // Rewrites
+  --tui-primary: var(--sw-primary);
+  --tui-primary-hover: var(--sw-dark-primary);
+  --tui-primary-active: var(--sw-light-primary);
+  --tui-accent: var(--sw-accent);
+  --tui-accent-hover: var(--sw-accent);
+  --tui-accent-active: var(--sw-accent);
+  --tui-disabled: var(--sw-divider);
+  --tui-text-01: var(--sw-primary-text);
+  --tui-text-02: var(--sw-secondary-text);
+  --tui-text-03: var(--sw-divider);
+  --tui-link: var(--sw-accent);
+  --tui-link-hover: var(--sw-primary);
+
+  --tui-base-03: var(--atm-background-regular);
+}
+
+[tuiWrapper][data-appearance="green"] {
+  background: #5fc656;
+  color: #fff;
+
+  &:hover:not(._no-hover),
+  &[data-state="hover"] {
+    background: #6dd363;
+  }
+
+  &:active:not(._no-active),
+  &[data-state="active"],
+  &[data-state="active"]:hover {
+    background: #529f4c;
+  }
+  &:disabled:disabled,
+  &[data-state="disabled"][data-state="disabled"] {
+    background: #4d834a;
+  }
+}

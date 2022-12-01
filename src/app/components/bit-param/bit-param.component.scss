@@ -1,0 +1,9 @@
+.param {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &__name {
+    color: var(--sw-primary-text);
+    font-weight: 600;
+  }
+}

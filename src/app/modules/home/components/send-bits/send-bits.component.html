@@ -1,0 +1,87 @@
+<div class="send-bits">
+  <div class="send-bits__title">Send a bit of soul</div>
+
+  <div class="send-bits__form">
+    <img
+      class="send-bits__preview"
+      src="https://w7.pngwing.com/pngs/253/47/png-transparent-crystal-symmetry-drawing-plating-crystal-poster-miscellaneous-purple-symmetry-thumbnail.png"
+    />
+
+    <form class="send-bits__fields" [formGroup]="bitForm">
+      <tui-input formControlName="to" tuiTextfieldSize="m">
+        Enter the recipient's address
+        <input tuiTextfield type="text" />
+      </tui-input>
+
+      <div class="send-bits__params">
+        <tui-select tuiTextfieldSize="m" formControlName="familiarity">
+          Familiarity
+          <input tuiTextfield placeholder="Choose your Familiarity" />
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="familiarityList"
+          ></tui-data-list-wrapper>
+        </tui-select>
+
+        <tui-select tuiTextfieldSize="m" formControlName="liking">
+          Liking
+          <input tuiTextfield placeholder="Choose your Liking" />
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="likingList"
+          ></tui-data-list-wrapper>
+        </tui-select>
+
+        <tui-select tuiTextfieldSize="m" formControlName="solidity">
+          Solidity
+          <input tuiTextfield placeholder="Choose your Solidity" />
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="solidityList"
+          ></tui-data-list-wrapper>
+        </tui-select>
+      </div>
+
+      <label tuiLabel="Chose shine" class="send-bits__shine">
+        <div tuiGroup [collapsed]="true">
+          <tui-radio-block
+            contentAlign="right"
+            formControlName="shine"
+            item="shine"
+            size="s"
+          >
+            Shine
+          </tui-radio-block>
+          <tui-radio-block
+            contentAlign="right"
+            formControlName="shine"
+            item="blaze"
+            size="s"
+          >
+            Blaze
+          </tui-radio-block>
+          <tui-radio-block
+            contentAlign="right"
+            formControlName="shine"
+            item="halo"
+            size="s"
+          >
+            Halo
+          </tui-radio-block>
+        </div>
+      </label>
+
+      <button
+        tuiButton
+        type="button"
+        appearance="primary"
+        size="m"
+        class="tui-space_top-3"
+        (click)="onSend()"
+        [disabled]="bitForm.invalid"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</div>

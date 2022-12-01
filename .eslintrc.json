@@ -1,0 +1,36 @@
+{
+  "root": true,
+  "plugins": ["html", "@angular-eslint"],
+  "extends": ["@tinkoff/eslint-config-angular"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/no-useless-constructor": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "sw",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "sw",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    }
+  ]
+}

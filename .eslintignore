@@ -1,0 +1,7 @@
+# IDE
+.angular
+.vscode
+.idea
+
+# Dependency directories
+node_modules

@@ -1,0 +1,11 @@
+<div class="home" [class.home_inactive]="!(myWalletAddress$ | async)">
+  <div class="home__header header">
+    <div class="header__logo">Soul of the Wallet</div>
+    <div class="header__my-wallet">{{ myWalletAddress$ | async }}</div>
+  </div>
+
+  <div class="home__content">
+    <sw-soul class="home__soul"> </sw-soul>
+    <sw-bits-of-soul-tabs class="home__tabs"></sw-bits-of-soul-tabs>
+  </div>
+</div>
