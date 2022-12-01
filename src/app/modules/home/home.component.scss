@@ -1,61 +1,146 @@
 .home {
   display: flex;
   flex-direction: column;
-  padding: 0 24px 40px 24px;
+  align-items: center;
   background: #fff5f2;
   height: 100%;
   position: relative;
+  z-index: 1;
 
-  &_inactive::before {
-    content: "Авторизуйтесь в плагине Metamask";
-    display: flex;
-    padding-top: 10%;
-    justify-content: center;
-    font-size: 44px;
-
-    color: black;
-    position: absolute;
-    z-index: 999;
+  &::before {
+    position: fixed;
+    height: 100vh;
     top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: var(--sw-light-primary);
+    width: 100%;
+    content: "";
+    background: url("https://img3.goodfon.ru/wallpaper/nbig/e/5a/sfera-abstrakciya-geometriya.jpg")
+      center no-repeat;
+    background-size: cover;
+    z-index: 0;
   }
 
   &__header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    align-items: center;
     flex: 0 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background: rgba(41, 41, 44, 0.9);
+  }
+
+  &__content-wrapper {
+    padding: 24px 24px 60px 24px;
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
   }
 
   &__content {
     display: flex;
-    gap: 16px;
-    flex: 1 1;
+    gap: 32px;
+    flex: 1 1 1600px;
+    max-width: 1600px;
+    position: relative;
   }
 
   &__soul {
     height: 100vh;
     flex: 1 1;
+    position: sticky;
+    top: 88px;
   }
 
   &__tabs {
     flex: 2 2;
     height: 100%;
+    background: rgb(248, 247, 247, 0.9);
+    border-radius: 0.75rem;
+    padding: 0 16px;
   }
 }
 
 .header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--sw-divider);
+  height: 64px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    width: 1600px;
+    max-width: 1600px;
+    gap: 32px;
+  }
+
+  padding: 10px 24px;
+
   &__logo {
     padding: 10px;
-    border: 2px solid lightcoral;
+    border: 2px solid var(--sw-primary);
     font-size: 22px;
+    display: inline-block;
+    color: white;
+  }
+
+  &__section {
+    &_left {
+      flex: 1 1;
+    }
+
+    &_right {
+      flex: 2 2;
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+    }
+  }
+
+  &__search {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__search-field {
+    width: 420px;
   }
 
   &__my-wallet {
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
+
+    color: var(--sw-primary);
+
+    span:last-child {
+      border-top: 2px solid var(--sw-primary);
+      align-self: flex-end;
+      padding-left: 16px;
+      font-size: 12px;
+      color: white;
+    }
+  }
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  background: var(--sw-secondary-text);
+  background: url("https://images.wallpaperscraft.ru/image/single/ulitsa_luzha_otrazhenie_200395_1920x1080.jpg")
+    center no-repeat;
+  background-size: cover;
+  span {
+    font-size: 72px;
+    line-height: 72px;
+
+    padding: 8px 16px;
+    font-weight: 600;
+    text-decoration: underline;
+    color: var(--sw-base-white);
+    background: var(--sw-accent);
   }
 }

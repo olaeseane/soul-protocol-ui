@@ -1,16 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { HomeService } from '../../services/home.service';
 
 @Component({
   selector: 'sw-soul',
   templateUrl: './soul.component.html',
   styleUrls: ['./soul.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SoulComponent implements OnInit {
+  soul$ = this.dataService.getSoulParams();
 
-  constructor() { }
+  constructor(private readonly dataService: HomeService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

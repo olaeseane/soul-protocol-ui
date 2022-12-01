@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ReceivedBitsService } from './services/received-bits.service';
+import { HomeService } from '../../services/home.service';
 
 @Component({
   selector: 'sw-received-bits',
@@ -8,9 +8,9 @@ import { ReceivedBitsService } from './services/received-bits.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReceivedBitsComponent implements OnInit {
-  soulItems$ = this.receivedBitsService.fetchSoulItems();
+  bits$ = this.dataService.getBits();
 
-  constructor(private readonly receivedBitsService: ReceivedBitsService) {}
+  constructor(private readonly dataService: HomeService) {}
 
   ngOnInit(): void {}
 }

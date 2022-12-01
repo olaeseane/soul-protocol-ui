@@ -12,19 +12,18 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class Web3Service {
-  myWalletAddress$ = new BehaviorSubject<string | null>(
-    window.ethereum as string | null
-  );
+  myWalletAddress$ = new BehaviorSubject<string | null>(null);
 
   web3Modal;
   web3js: any;
   walletProvider: provider | undefined;
   accounts: string[] | undefined;
+  contract: any;
 
   provider = new ethers.providers.JsonRpcProvider(
     'https://matic-mumbai.chainstacklabs.com'
   );
-  address = '0x8F4a7f404d09Fea7A9A6c1c9E99a9F341D3DD9A6';
+  mumbaiAddress = '0x8F4a7f404d09Fea7A9A6c1c9E99a9F341D3DD9A6';
 
   constructor(@Inject(WEB3) private readonly web3: Web3) {
     const providerOptions = {
@@ -73,10 +72,16 @@ export class Web3Service {
       this.myWalletAddress$.next(this.accounts[0]);
     }
 
+    this.contract = new ethers.Contract(
+      this.mumbaiAddress,
+      ABI_CONTRACT,
+      this.provider
+    );
+
     return this.accounts;
   }
 
   getContract() {
-    return new ethers.Contract(this.address, ABI_CONTRACT, this.provider);
+    return this.contract;
   }
 }

@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BitsOfSoulTabsComponent } from './components/bits-of-soul-tabs/bits-of-soul-tabs.component';
 import {
+  TuiBadgeModule,
   TuiDataListWrapperModule,
   TuiFieldErrorPipeModule,
   TuiInputModule,
@@ -20,10 +21,13 @@ import {
   TuiErrorModule,
   TuiGroupModule,
   TuiLabelModule,
+  TuiModeModule,
+  TuiScrollbarModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import { SendBitsComponent } from './components/send-bits/send-bits.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BitParamModule } from '../../components/bit-param/bit-param.module';
 
 const routes: Routes = [
   {
@@ -57,6 +61,10 @@ const routes: Routes = [
     TuiLabelModule,
     TuiErrorModule,
     TuiFieldErrorPipeModule,
+    TuiScrollbarModule,
+    BitParamModule,
+    TuiBadgeModule,
+    TuiModeModule,
   ],
 })
 export class HomeModule {}

@@ -1,5 +1,4 @@
 .bit {
-  width: 200px;
   display: flex;
   flex-direction: column;
 
@@ -7,6 +6,7 @@
   overflow: hidden;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   border: 2px solid var(--sw-accent);
+  border: 2px solid var(--sw-primary);
 
   &__image {
     img {
@@ -17,13 +17,17 @@
 
   &__address {
     padding: 8px;
-    //border: 2px solid var(--sw-primary);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    //border-top: 2px solid var(--sw-accent);
     font-weight: 600;
-    background: white;
+    background: var(--sw-light-primary);
+    background: var(--sw-primary);
   }
 
   &__params {
-    background: var(--sw-light-primary);
+    background: white;
     display: flex;
     flex-direction: column;
     gap: 4px;

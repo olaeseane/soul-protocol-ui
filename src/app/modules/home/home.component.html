@@ -1,11 +1,51 @@
-<div class="home" [class.home_inactive]="!(myWalletAddress$ | async)">
+<div class="home" *ngIf="myWalletAddress$ | async; else banner">
   <div class="home__header header">
-    <div class="header__logo">Soul of the Wallet</div>
-    <div class="header__my-wallet">{{ myWalletAddress$ | async }}</div>
+    <div class="header__content">
+      <div class="header__section_left">
+        <div class="header__logo">Soul of the Wallet</div>
+      </div>
+
+      <div class="header__section_right">
+        <div class="header__search">
+          <tui-input
+            #searchInput
+            class="header__search-field"
+            tuiTextfieldSize="m"
+            [formControl]="search"
+            [tuiTextfieldIconLeft]="'tuiIconSearchLarge'"
+            [tuiTextfieldCleaner]="true"
+          >
+            Enter wallet address for verification
+            <input tuiTextfield type="text" />
+          </tui-input>
+
+          <button
+            tuiIconButton
+            type="button"
+            icon="tuiIconSearchLarge"
+            size="m"
+            (click)="onSearch(searchInput)"
+          ></button>
+        </div>
+
+        <div class="header__my-wallet">
+          <span>{{ myWalletAddress$ | async }}</span>
+          <span>Your address</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="home__content">
-    <sw-soul class="home__soul"> </sw-soul>
-    <sw-bits-of-soul-tabs class="home__tabs"></sw-bits-of-soul-tabs>
+  <div class="home__content-wrapper">
+    <div class="home__content">
+      <sw-soul class="home__soul"> </sw-soul>
+      <sw-bits-of-soul-tabs class="home__tabs"></sw-bits-of-soul-tabs>
+    </div>
   </div>
 </div>
+
+<ng-template #banner>
+  <div class="banner" *ngIf="!(myWalletAddress$ | async)">
+    <span>Log in via the MetaMask plugin</span>
+  </div>
+</ng-template>

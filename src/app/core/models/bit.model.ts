@@ -25,3 +25,7 @@ export type Solidity =
   | 'critical';
 
 export type Shine = 'shine' | 'blaze' | 'halo';
+
+export interface Bit {
+  name: string;
+}
