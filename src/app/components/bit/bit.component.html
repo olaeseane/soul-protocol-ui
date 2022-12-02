@@ -1,9 +1,4 @@
-<tui-loader
-  *tuiLet="bit$ | async as bit"
-  [inheritColor]="true"
-  [overlay]="true"
-  [showLoader]="!bit"
->
+<tui-loader [inheritColor]="true" [overlay]="true" [showLoader]="!bit">
   <div class="bit" [class.tui-skeleton]="!bit">
     <!--     // todo разобраться картинкой-->
     <img
@@ -11,12 +6,8 @@
       src="https://w7.pngwing.com/pngs/253/47/png-transparent-crystal-symmetry-drawing-plating-crystal-poster-miscellaneous-purple-symmetry-thumbnail.png"
     />
 
-    <div
-      class="bit__address"
-      *tuiLet="bitSender$ | async as bitSender"
-      [class.tui-skeleton]="!bitSender"
-    >
-      {{ bitSender }}
+    <div class="bit__address" [class.tui-skeleton]="true">
+      {{ "xz" }}
     </div>
     <div class="bit__params">
       <sw-bit-param

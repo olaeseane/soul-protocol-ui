@@ -9,8 +9,10 @@ import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { SendBitsComponent } from '../send-bits/send-bits.component';
 import { TuiDestroyService } from '@taiga-ui/cdk';
-import { startWith, takeUntil } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
 import { HomeService } from '../../services/home.service';
+import { Select, Store } from '@ngxs/store';
+import { HomeState } from '../../store/home.state';
 
 @Component({
   selector: 'sw-bits-of-soul-tabs',
@@ -28,15 +30,17 @@ export class BitsOfSoulTabsComponent implements OnInit {
     }
   );
 
+  @Select(HomeState.receivedBitsQuantity) receivedQuantity$: Observable<number>;
+  @Select(HomeState.sentBitsQuantity) sentQuantity$: Observable<number>;
+
   activeItemIndex = 0;
-  receivedQuantity$ = this.dataService.getReceivedBitsIds().pipe(startWith([]));
-  sendQuantity$ = this.dataService.getReceivedBitsIds().pipe(startWith([]));
 
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector,
     private readonly destroy$: TuiDestroyService,
-    private readonly dataService: HomeService
+    private readonly dataService: HomeService,
+    private readonly store: Store
   ) {}
 
   ngOnInit(): void {}

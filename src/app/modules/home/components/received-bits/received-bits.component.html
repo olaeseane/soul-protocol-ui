@@ -2,10 +2,6 @@
   <div class="received-bits__filters">ФИЛЬТРЫ</div>
 
   <div class="received-bits__list">
-    <sw-bit
-      class="bit"
-      *ngFor="let bitId of bitsIds$ | async"
-      [bitId]="bitId"
-    ></sw-bit>
+    <sw-bit class="bit" *ngFor="let bit of bits$ | async" [bit]="bit"></sw-bit>
   </div>
 </div>

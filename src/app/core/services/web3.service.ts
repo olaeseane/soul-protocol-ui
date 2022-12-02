@@ -6,14 +6,11 @@ import type { provider } from 'web3-core';
 import { WEB3 } from '../web3';
 import { ethers } from 'ethers';
 import { ABI_CONTRACT } from '../contracts/contract';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Web3Service {
-  myWalletAddress$ = new BehaviorSubject<string | null>(null);
-
   web3Modal;
   web3js: any;
   walletProvider: provider | undefined;
@@ -67,10 +64,6 @@ export class Web3Service {
       this.web3js = new Web3(this.walletProvider);
     } // create web3 instance
     this.accounts = await this.web3js.eth.getAccounts();
-
-    if (this.accounts) {
-      this.myWalletAddress$.next(this.accounts[0]);
-    }
 
     this.contract = new ethers.Contract(
       this.mumbaiAddress,

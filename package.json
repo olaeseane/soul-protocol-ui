@@ -50,6 +50,7 @@
     "@angular-eslint/eslint-plugin": "^14.0.0",
     "@angular/cli": "^13.2.4",
     "@angular/compiler-cli": "~13.2.3",
+    "@ngxs/logger-plugin": "^3.7.6",
     "@tinkoff/eslint-config": "^1.41.0",
     "@tinkoff/eslint-config-angular": "^1.46.0",
     "@types/jasmine": "~3.10.3",

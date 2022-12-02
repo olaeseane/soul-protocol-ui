@@ -1,50 +1,23 @@
 import { Injectable } from '@angular/core';
-import {
-  BehaviorSubject,
-  catchError,
-  from,
-  map,
-  Observable,
-  of,
-  switchMap,
-} from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { Web3Service } from '../../../core/services/web3.service';
 import { Soul } from '../../../core/models/soul.model';
-import { ethers } from 'ethers';
-import { BigNumberish } from '@ethersproject/bignumber';
-import { convertUint256ToString } from '../../../core/operators/uitn256.operator';
 import { toBit } from '../../../core/operators/toBit.operator';
 import { Bit } from '../../../core/models/bit.model';
+import { Select, Store } from '@ngxs/store';
+import { CoreState } from '../../../core/state/core.state';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
-  activeWalletAddress$ = new BehaviorSubject<string>('');
+  @Select(CoreState.activeWalletAddress)
+  activeWalletAddress$: Observable<string>;
 
-  constructor(private readonly web3Service: Web3Service) {
-    this.web3Service.myWalletAddress$.subscribe((address) => {
-      if (address) {
-        const testAddress = '0x34C064b128237DB2B917962c45083Ef140564bD8';
-        this.activeWalletAddress$.next(testAddress);
-
-        //TODO включить (убрать мок)
-        // this.activeWalletAddress$.next(address);
-      }
-    });
-  }
-
-  checkWallet(address: string) {
-    if (address) {
-      const testAddress = '0x34C064b128237DB2B917962c45083Ef140564bD8';
-      this.activeWalletAddress$.next(testAddress);
-
-      //TODO включить (убрать мок)
-      // this.activeWalletAddress$.next(address);
-
-      alert('Проверяем адрес: ' + address);
-    }
-  }
+  constructor(
+    private readonly web3Service: Web3Service,
+    private readonly store: Store
+  ) {}
 
   getSoulParams() {
     const contract = this.web3Service.getContract();
@@ -54,32 +27,6 @@ export class HomeService {
 
       //TODO PEPEGA заменить на корректный эндпоинт
       // contract['totalSupply'](this.activeWalletAddress) as Promise<Soul>
-    );
-  }
-
-  getSendQuantity() {
-    const contract = this.web3Service.getContract();
-
-    return from(
-      contract['totalOwners']() as Promise<number>
-
-      //TODO PEPEGA заменить на корректный эндпоинт
-      // contract['totalSupply'](this.activeWalletAddress) as Promise<Soul>
-    ).pipe(map((data) => Number(ethers.utils.formatEther(data))));
-  }
-
-  getReceivedBitsIds(): Observable<string[]> {
-    const contract = this.web3Service.getContract();
-
-    return this.activeWalletAddress$.pipe(
-      switchMap((address) => {
-        return from(
-          contract['fetchSenderTokens'](address) as Promise<BigNumberish[]>
-        ).pipe(
-          convertUint256ToString(),
-          catchError(() => of([] as string[]))
-        );
-      })
     );
   }
 

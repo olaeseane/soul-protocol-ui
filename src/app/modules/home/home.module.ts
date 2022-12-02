@@ -30,7 +30,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BitParamModule } from '../../components/bit-param/bit-param.module';
 import { NgxsModule } from '@ngxs/store';
 import { HomeState } from './store/home.state';
-import { environment } from '../../../environments/environment';
 
 const routes: Routes = [
   {
@@ -49,11 +48,9 @@ const routes: Routes = [
     SendBitsComponent,
   ],
   imports: [
-    NgxsModule.forRoot([HomeState], {
-      developmentMode: !environment.production,
-    }),
     CommonModule,
     RouterModule.forChild(routes),
+    NgxsModule.forFeature([HomeState]),
     TuiTabsModule,
     BitModule,
     TuiTextfieldControllerModule,

@@ -3,6 +3,10 @@ import { Web3Service } from '../../core/services/web3.service';
 import { FormControl } from '@angular/forms';
 import { TuiInputComponent } from '@taiga-ui/kit';
 import { HomeService } from './services/home.service';
+import { Select, Store } from '@ngxs/store';
+import { CoreState } from '../../core/state/core.state';
+import { Observable } from 'rxjs';
+import { SetActiveWalletAddress } from '../../core/state/core.actions';
 
 @Component({
   selector: 'sw-home',
@@ -11,12 +15,13 @@ import { HomeService } from './services/home.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  myWalletAddress$ = this.web3Service.myWalletAddress$;
+  @Select(CoreState.myWalletAddress) myWalletAddress$: Observable<string>;
   search = new FormControl(null);
 
   constructor(
     private readonly web3Service: Web3Service,
-    private readonly dataService: HomeService
+    private readonly dataService: HomeService,
+    private readonly store: Store
   ) {}
 
   ngOnInit(): void {}
@@ -27,6 +32,6 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    this.dataService.checkWallet(this.search.value);
+    this.store.dispatch(new SetActiveWalletAddress(this.search.value));
   }
 }

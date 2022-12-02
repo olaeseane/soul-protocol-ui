@@ -1,28 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Web3Service } from './core/services/web3.service';
-import { TuiDestroyService } from '@taiga-ui/cdk';
+import { Store } from '@ngxs/store';
+import { ConnectWallet } from './core/state/core.actions';
 
 @Component({
   selector: 'sw-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [TuiDestroyService],
 })
 export class AppComponent implements OnInit {
-  data: string[] | undefined;
-
-  constructor(
-    private readonly web3Service: Web3Service,
-    private readonly destroy$: TuiDestroyService
-  ) {}
+  constructor(private readonly store: Store) {}
 
   ngOnInit() {
-    this.connect();
-  }
-
-  connect() {
-    this.web3Service.connectAccount().then((response) => {
-      this.data = response;
-    });
+    this.store.dispatch(new ConnectWallet());
   }
 }

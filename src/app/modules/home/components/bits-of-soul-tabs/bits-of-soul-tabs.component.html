@@ -6,16 +6,16 @@
         <tui-badge
           class="tui-space_left-2"
           status="info"
-          [value]="(receivedQuantity$ | async)?.length"
+          [value]="receivedQuantity$ | async"
           size="xs"
         ></tui-badge>
       </button>
       <button tuiTab class="tabs__tab">
-        Send
+        Sent
         <tui-badge
           class="tui-space_left-2"
           status="info"
-          [value]="(sendQuantity$ | async)?.length"
+          [value]="sentQuantity$ | async"
           size="xs"
         ></tui-badge>
       </button>

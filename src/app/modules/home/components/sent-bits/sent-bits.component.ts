@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { HomeService } from '../../services/home.service';
+import { Select, Store } from '@ngxs/store';
+import { HomeState } from '../../store/home.state';
+import { Observable, takeUntil } from 'rxjs';
+import { CoreState } from '../../../../core/state/core.state';
+import { GetSentBitsIds } from '../../store/home.actions';
+import { TuiDestroyService } from '@taiga-ui/cdk';
+import { Bit } from '../../../../core/models/bit.model';
 
 @Component({
   selector: 'sw-sent-bits',
@@ -8,9 +14,18 @@ import { HomeService } from '../../services/home.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SentBitsComponent implements OnInit {
-  bitsIds$ = this.dataService.getReceivedBitsIds();
+  @Select(HomeState.sentBits) bits$: Observable<Bit[]>;
+  @Select(CoreState.activeWalletAddress)
+  activeWalletAddress$: Observable<string>;
 
-  constructor(private readonly dataService: HomeService) {}
+  constructor(
+    private readonly destroy$: TuiDestroyService,
+    private readonly store: Store
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activeWalletAddress$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((address) => this.store.dispatch(new GetSentBitsIds()));
+  }
 }
