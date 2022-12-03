@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, of, tap } from 'rxjs';
 import { Web3Service } from '../../../core/services/web3.service';
-import { Soul } from '../../../core/models/soul.model';
 import { toBit } from '../../../core/operators/toBit.operator';
 import { Bit, BitType } from '../../../core/models/bit.model';
 import { Select, Store } from '@ngxs/store';
@@ -22,17 +21,6 @@ export class HomeService {
     private readonly web3Service: Web3Service,
     private readonly store: Store
   ) {}
-
-  getSoulParams() {
-    const contract = this.web3Service.getContract();
-
-    return from(
-      contract['totalOwners']() as Promise<Soul>
-
-      //TODO PEPEGA заменить на корректный эндпоинт
-      // contract['totalSupply'](this.activeWalletAddress) as Promise<Soul>
-    );
-  }
 
   getBit(bitId: string | null, type: BitType): Observable<Bit | null> {
     if (!bitId) {
@@ -75,8 +63,11 @@ export class HomeService {
       this.receivedBits.push(bit);
 
       if (this.receivedBits.length === receivedBitsQuantity) {
-        this.store.dispatch(new SaveReceivedBits(this.receivedBits));
-        this.receivedBits = [];
+        //TODO костыль
+        setTimeout(() => {
+          this.store.dispatch(new SaveReceivedBits(this.receivedBits));
+          this.receivedBits = [];
+        }, 200);
       }
     }
   }

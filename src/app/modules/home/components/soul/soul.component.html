@@ -1,20 +1,40 @@
-PEPEGA отлдка души: {{ soul$ | async }}
-
-<div class="soul">
-  <img
-    class="soul__img"
-    src="https://cs13.pikabu.ru/post_img/big/2021/02/22/8/1613998559190017080.jpg"
-    alt=""
-  />
-
-  <div class="soul__params">
-    <sw-bit-param name="field1" value="value1"></sw-bit-param>
-    <sw-bit-param name="field1" value="value1"></sw-bit-param>
-    <sw-bit-param name="field1" value="value1"></sw-bit-param>
-  </div>
-  <div class="soul__senders">
-    <sw-bit-param name="field1" value="value1"></sw-bit-param>
-    <sw-bit-param name="field1" value="value1"></sw-bit-param>
-    <sw-bit-param name="field1" value="value1"></sw-bit-param>
-  </div>
+<div class="soul-wrapper">
+  Soul of
+  <span>{{ activeWalletAddress$ | async }}</span>
 </div>
+
+<tui-loader
+  class="loader"
+  *tuiLet="soul$ | async as soul"
+  [overlay]="true"
+  [showLoader]="!soul"
+>
+  <div class="soul">
+    <img class="soul__img" [src]="getSoulImageUrl(soul)" alt="" />
+
+    <div class="soul__senders">
+      <sw-bit-param
+        name="Celebrity"
+        [value]="soul?.senders.celebrities || '0'"
+      ></sw-bit-param>
+      <sw-bit-param
+        name="Uncommon"
+        [value]="soul?.senders.uncommon || '0'"
+      ></sw-bit-param>
+      <sw-bit-param
+        name="Common"
+        [value]="soul?.senders.common || '0'"
+      ></sw-bit-param>
+    </div>
+
+    <div class="soul__params">
+      <sw-bit-param
+        name="Familiarity"
+        [value]="soul?.familiarity"
+      ></sw-bit-param>
+      <sw-bit-param name="Liking" [value]="soul?.liking"></sw-bit-param>
+      <sw-bit-param name="Solidity" [value]="soul?.solidity"></sw-bit-param>
+      <sw-bit-param name="Shining" [value]="soul?.shining"></sw-bit-param>
+    </div>
+  </div>
+</tui-loader>

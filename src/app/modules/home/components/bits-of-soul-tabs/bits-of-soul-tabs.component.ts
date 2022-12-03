@@ -10,8 +10,7 @@ import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { SendBitsComponent } from '../send-bits/send-bits.component';
 import { TuiDestroyService } from '@taiga-ui/cdk';
 import { Observable, takeUntil } from 'rxjs';
-import { HomeService } from '../../services/home.service';
-import { Select, Store } from '@ngxs/store';
+import { Select } from '@ngxs/store';
 import { HomeState } from '../../store/home.state';
 
 @Component({
@@ -38,9 +37,7 @@ export class BitsOfSoulTabsComponent implements OnInit {
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector,
-    private readonly destroy$: TuiDestroyService,
-    private readonly dataService: HomeService,
-    private readonly store: Store
+    private readonly destroy$: TuiDestroyService
   ) {}
 
   ngOnInit(): void {}

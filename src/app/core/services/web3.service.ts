@@ -20,7 +20,7 @@ export class Web3Service {
   provider = new ethers.providers.JsonRpcProvider(
     'https://matic-mumbai.chainstacklabs.com'
   );
-  mumbaiAddress = '0xf1a366d16686ca5df7d86aa49b40dbeac8a7409c';
+  mumbaiAddress = '0xd971A8147314118bc930cA88E729F1760e1a938b';
 
   constructor(@Inject(WEB3) private readonly web3: Web3) {
     const providerOptions = {

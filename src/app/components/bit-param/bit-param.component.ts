@@ -13,7 +13,7 @@ import {
 })
 export class BitParamComponent implements OnInit {
   @Input() name = 'param';
-  @Input() value = 'unknown';
+  @Input() value: string | number = 'unknown';
 
   constructor() {}
 

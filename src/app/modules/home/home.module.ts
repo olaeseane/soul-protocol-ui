@@ -21,6 +21,7 @@ import {
   TuiErrorModule,
   TuiGroupModule,
   TuiLabelModule,
+  TuiLoaderModule,
   TuiModeModule,
   TuiScrollbarModule,
   TuiTextfieldControllerModule,
@@ -30,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BitParamModule } from '../../components/bit-param/bit-param.module';
 import { NgxsModule } from '@ngxs/store';
 import { HomeState } from './store/home.state';
+import { TuiLetModule } from '@taiga-ui/cdk';
 
 const routes: Routes = [
   {
@@ -68,6 +70,8 @@ const routes: Routes = [
     BitParamModule,
     TuiBadgeModule,
     TuiModeModule,
+    TuiLoaderModule,
+    TuiLetModule,
   ],
 })
 export class HomeModule {}

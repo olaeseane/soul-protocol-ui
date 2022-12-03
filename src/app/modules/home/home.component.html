@@ -1,5 +1,5 @@
 <div class="home" *ngIf="myWalletAddress$ | async; else banner">
-  <div class="home__header header">
+  <div class="home__header header" [tuiMode]="'onDark'">
     <div class="header__content">
       <div class="header__section_left">
         <div class="header__logo">Soul of the Wallet</div>
@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <div class="home__content-wrapper">
+  <div class="home__content-wrapper" [tuiMode]="'onLight'">
     <div class="home__content">
       <sw-soul class="home__soul"> </sw-soul>
       <sw-bits-of-soul-tabs class="home__tabs"></sw-bits-of-soul-tabs>

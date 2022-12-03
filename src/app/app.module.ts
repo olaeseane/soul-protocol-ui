@@ -1,4 +1,9 @@
-import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
+import {
+  TuiAlertModule,
+  TuiDialogModule,
+  TuiModeModule,
+  TuiRootModule,
+} from '@taiga-ui/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -27,6 +32,7 @@ const routes: Routes = [
     TuiAlertModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    TuiModeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

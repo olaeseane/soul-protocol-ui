@@ -46,7 +46,7 @@ export class CoreState {
   }
 
   @Action(SetActiveWalletAddress)
-  updateFilter(
+  setActiveWalletAddress(
     ctx: StateContext<CoreStateModel>,
     action: SetActiveWalletAddress
   ) {

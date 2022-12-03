@@ -1,3 +1,1 @@
-export const environment = {
-  infuraId: ''
-};
+export const environment = {};

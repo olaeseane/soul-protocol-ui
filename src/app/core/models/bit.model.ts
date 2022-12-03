@@ -24,7 +24,7 @@ export type Solidity =
   | 'risky'
   | 'critical';
 
-export type Shine = 'shine' | 'blaze' | 'halo';
+export type Shine = 'empty' | 'shine' | 'blaze' | 'halo';
 
 export type BitType = 'received' | 'sent';
 

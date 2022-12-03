@@ -125,6 +125,24 @@ export const ABI_CONTRACT = [
     type: 'event',
   },
   {
+    inputs: [],
+    name: '_wormholeState',
+    outputs: [
+      {
+        internalType: 'address payable',
+        name: 'wormhole',
+        type: 'address',
+      },
+      {
+        internalType: 'uint16',
+        name: 'chainId',
+        type: 'uint16',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
     inputs: [
       {
         internalType: 'address',
@@ -163,6 +181,25 @@ export const ABI_CONTRACT = [
   },
   {
     inputs: [],
+    name: 'chainId',
+    outputs: [
+      {
+        internalType: 'uint16',
+        name: '',
+        type: 'uint16',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_owner',
+        type: 'address',
+      },
+    ],
     name: 'fetchOwnerTokens',
     outputs: [
       {
@@ -185,7 +222,7 @@ export const ABI_CONTRACT = [
     name: 'fetchSenderTokens',
     outputs: [
       {
-        internalType: 'uint256[]', // массив id токена (tokeId) received
+        internalType: 'uint256[]',
         name: '',
         type: 'uint256[]',
       },
@@ -226,6 +263,19 @@ export const ABI_CONTRACT = [
     type: 'function',
   },
   {
+    inputs: [],
+    name: 'getEra',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
     inputs: [
       {
         components: [
@@ -254,11 +304,6 @@ export const ABI_CONTRACT = [
             name: 'rarity',
             type: 'string',
           },
-          {
-            internalType: 'string',
-            name: 'era',
-            type: 'string',
-          },
         ],
         internalType: 'struct SoulHub.Traits',
         name: '_traits',
@@ -268,9 +313,9 @@ export const ABI_CONTRACT = [
     name: 'getImageURI',
     outputs: [
       {
-        internalType: 'string',
-        name: '',
-        type: 'string',
+        internalType: 'bytes',
+        name: 'imageURI',
+        type: 'bytes',
       },
     ],
     stateMutability: 'view',
@@ -323,11 +368,6 @@ export const ABI_CONTRACT = [
             name: 'rarity',
             type: 'string',
           },
-          {
-            internalType: 'string',
-            name: 'era',
-            type: 'string',
-          },
         ],
         internalType: 'struct SoulHub.Traits',
         name: '_traits',
@@ -342,7 +382,7 @@ export const ABI_CONTRACT = [
         type: 'string',
       },
     ],
-    stateMutability: 'pure',
+    stateMutability: 'view',
     type: 'function',
   },
   {
@@ -359,6 +399,25 @@ export const ABI_CONTRACT = [
       },
     ],
     name: 'isApprovedForAll',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'hash',
+        type: 'bytes32',
+      },
+    ],
+    name: 'isTransferCompleted',
     outputs: [
       {
         internalType: 'bool',
@@ -398,6 +457,11 @@ export const ABI_CONTRACT = [
             name: 'shining',
             type: 'string',
           },
+          {
+            internalType: 'string',
+            name: 'rarity',
+            type: 'string',
+          },
         ],
         internalType: 'struct SoulHub.Traits',
         name: 'traits',
@@ -417,6 +481,25 @@ export const ABI_CONTRACT = [
         internalType: 'string',
         name: '',
         type: 'string',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint16',
+        name: '_chainId',
+        type: 'uint16',
+      },
+    ],
+    name: 'nftContract',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32',
       },
     ],
     stateMutability: 'view',
@@ -558,6 +641,63 @@ export const ABI_CONTRACT = [
   {
     inputs: [
       {
+        internalType: 'uint16',
+        name: '_chainId',
+        type: 'uint16',
+      },
+    ],
+    name: 'setChainId',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: 'newEra',
+        type: 'string',
+      },
+    ],
+    name: 'setEra',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint16',
+        name: '_chainId',
+        type: 'uint16',
+      },
+      {
+        internalType: 'bytes32',
+        name: '_nftContract',
+        type: 'bytes32',
+      },
+    ],
+    name: 'setNftContract',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'wh',
+        type: 'address',
+      },
+    ],
+    name: 'setWormhole',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
         internalType: 'bytes4',
         name: 'interfaceId',
         type: 'bytes4',
@@ -633,7 +773,7 @@ export const ABI_CONTRACT = [
   {
     inputs: [
       {
-        internalType: 'uint256', // сюда кидаем tokeId
+        internalType: 'uint256',
         name: 'id',
         type: 'uint256',
       },
@@ -642,7 +782,7 @@ export const ABI_CONTRACT = [
     outputs: [
       {
         internalType: 'string',
-        name: '', // это неизвестный json объект, там будут лежать:
+        name: '',
         type: 'string',
       },
     ],
@@ -722,6 +862,66 @@ export const ABI_CONTRACT = [
     name: 'updateMintPrice',
     outputs: [],
     stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'wormhole',
+    outputs: [
+      {
+        internalType: 'contract IWormhole',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes',
+        name: 'encodedVm',
+        type: 'bytes',
+      },
+    ],
+    name: 'wormholeCompleteTransfer',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'tokenID',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint16',
+        name: 'recipientChain',
+        type: 'uint16',
+      },
+      {
+        internalType: 'bytes32',
+        name: 'recipient',
+        type: 'bytes32',
+      },
+      {
+        internalType: 'uint32',
+        name: 'nonce',
+        type: 'uint32',
+      },
+    ],
+    name: 'wormholeTransfer',
+    outputs: [
+      {
+        internalType: 'uint64',
+        name: 'sequence',
+        type: 'uint64',
+      },
+    ],
+    stateMutability: 'payable',
     type: 'function',
   },
 ];
