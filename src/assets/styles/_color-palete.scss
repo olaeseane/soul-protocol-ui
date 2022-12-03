@@ -27,6 +27,8 @@
   --tui-link-hover: var(--sw-primary);
 
   --tui-base-03: var(--atm-background-regular);
+  --tui-clear: rgba(74, 76, 80, 0.04);
+  --tui-clear-hover: rgba(28, 27, 27, 0.13);
 }
 
 [tuiWrapper][data-appearance="green"] {

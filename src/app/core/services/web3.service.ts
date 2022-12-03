@@ -16,11 +16,11 @@ export class Web3Service {
   walletProvider: provider | undefined;
   accounts: string[] | undefined;
   contract: any;
+  rwContract: any;
 
-  provider = new ethers.providers.JsonRpcProvider(
-    'https://matic-mumbai.chainstacklabs.com'
-  );
-  mumbaiAddress = '0xd971A8147314118bc930cA88E729F1760e1a938b';
+  provider = new ethers.providers.Web3Provider(window.ethereum);
+
+  mumbaiSmartContractAddress = '0xd971A8147314118bc930cA88E729F1760e1a938b';
 
   constructor(@Inject(WEB3) private readonly web3: Web3) {
     const providerOptions = {
@@ -66,9 +66,15 @@ export class Web3Service {
     this.accounts = await this.web3js.eth.getAccounts();
 
     this.contract = new ethers.Contract(
-      this.mumbaiAddress,
+      this.mumbaiSmartContractAddress,
       ABI_CONTRACT,
       this.provider
+    );
+
+    this.rwContract = new ethers.Contract(
+      this.mumbaiSmartContractAddress,
+      ABI_CONTRACT,
+      this.provider.getSigner()
     );
 
     return this.accounts;
@@ -76,5 +82,9 @@ export class Web3Service {
 
   getContract() {
     return this.contract;
+  }
+
+  getRWContract() {
+    return this.rwContract;
   }
 }

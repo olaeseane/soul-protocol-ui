@@ -38,9 +38,7 @@ export class CoreState {
       ctx.setState({
         ...state,
         myWalletAddress: accounts[0],
-        // activeWalletAddress: accounts[0],
-        //TODO отключить моковый кошелек
-        activeWalletAddress: '0x34C064b128237DB2B917962c45083Ef140564bD8',
+        activeWalletAddress: accounts[0],
       });
     }
   }

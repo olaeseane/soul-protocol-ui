@@ -7,15 +7,18 @@ import { from } from 'rxjs';
   providedIn: 'root',
 })
 export class SendBitsService {
-  contract = this.web3Service.getContract();
+  contractRW = this.web3Service.getRWContract();
 
   constructor(private readonly web3Service: Web3Service) {}
 
   sendBit(params: MintBitsParams) {
     return from(
-      this.contract['mintToken'](params.to, {
+      this.contractRW['mintToken'](params.to, {
         familiarity: params.familiarity,
         liking: params.liking,
+        solidity: params.solidity,
+        shining: params.shine,
+        rarity: 'business',
       })
     );
   }

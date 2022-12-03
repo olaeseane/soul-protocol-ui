@@ -1,4 +1,4 @@
-<div class="send-bits">
+<div class="send-bits" [tuiMode]="'onLight'">
   <div class="send-bits__title">Send a bit of soul</div>
 
   <div class="send-bits__form">
@@ -47,6 +47,14 @@
           <tui-radio-block
             contentAlign="right"
             formControlName="shine"
+            item="empty"
+            size="s"
+          >
+            None
+          </tui-radio-block>
+          <tui-radio-block
+            contentAlign="right"
+            formControlName="shine"
             item="shine"
             size="s"
           >
@@ -71,17 +79,22 @@
         </div>
       </label>
 
-      <button
-        tuiButton
-        type="button"
-        appearance="primary"
-        size="m"
-        class="tui-space_top-3"
-        (click)="onSend()"
-        [disabled]="bitForm.invalid"
+      <tui-loader
+        [showLoader]="isLoading$ | async"
+        [overlay]="true"
+        class="tui-space_top-3 button"
       >
-        Send
-      </button>
+        <button
+          tuiButton
+          type="button"
+          appearance="primary"
+          size="m"
+          (click)="onSend()"
+          [disabled]="bitForm.invalid"
+        >
+          Send
+        </button>
+      </tui-loader>
     </form>
   </div>
 </div>
