@@ -1,10 +1,7 @@
 <tui-loader [inheritColor]="true" [overlay]="true" [showLoader]="!bit">
   <div class="bit" [class.tui-skeleton]="!bit">
     <!--     // todo разобраться картинкой-->
-    <img
-      class="bit__image"
-      src="https://w7.pngwing.com/pngs/253/47/png-transparent-crystal-symmetry-drawing-plating-crystal-poster-miscellaneous-purple-symmetry-thumbnail.png"
-    />
+    <img class="bit__image" [src]="getBitImageUrl(bit)" />
 
     <div class="bit__address" [class.tui-skeleton]="true">
       {{ "xz" }}

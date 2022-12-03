@@ -8,6 +8,11 @@ import { TuiLoaderModule } from '@taiga-ui/core';
 @NgModule({
   declarations: [BitComponent],
   exports: [BitComponent],
-  imports: [CommonModule, BitParamModule, TuiLetModule, TuiLoaderModule],
+  imports: [
+    CommonModule,
+    BitParamModule,
+    TuiLetModule,
+    TuiLoaderModule,
+  ],
 })
 export class BitModule {}
