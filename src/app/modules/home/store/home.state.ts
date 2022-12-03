@@ -9,15 +9,12 @@ import {
 } from '@ngxs/store';
 
 import { HomeService } from '../services/home.service';
-import { GetReceivedBits, GetReceivedBitsIds } from './home.actions';
+import { GetReceivedBitsIds, SaveReceivedBits } from './home.actions';
 import { Bit } from '../../../core/models/bit.model';
 import { BigNumberish } from '@ethersproject/bignumber';
 import { CoreState } from '../../../core/state/core.state';
 import { Web3Service } from '../../../core/services/web3.service';
-import {
-  convertToBit,
-  convertUint256ArrayToStringArray,
-} from '../utils/converting.utils';
+import { convertUint256ArrayToStringArray } from '../utils/converting.utils';
 
 export interface HomeStateModel {
   receivedBitsIds: string[];
@@ -68,60 +65,43 @@ export class HomeState {
       ctx.setState({
         ...state,
         receivedBitsIds: stringIds,
+        receivedBits: [],
       });
     }
   }
 
-  @Action(GetReceivedBits)
-  async getReceivedBits(ctx: StateContext<HomeStateModel>) {
+  @Action(SaveReceivedBits)
+  async saveReceivedBits(
+    ctx: StateContext<HomeStateModel>,
+    action: SaveReceivedBits
+  ) {
     const state = ctx.getState();
 
-    const activeWalletAddress = this.store.selectSnapshot(
-      CoreState.activeWalletAddress
-    );
-
-    const contract = this.web3Service.getContract();
-
-    if (activeWalletAddress && contract) {
-      const ids = (await contract['fetchSenderTokens'](
-        activeWalletAddress
-      )) as BigNumberish[];
-
-      const bits: Bit[] = [];
-      const stringIds = convertUint256ArrayToStringArray(ids);
-
-      for (const id of stringIds) {
-        const bit = (await contract['tokenURI'](id)) as string;
-        bits.push(convertToBit(bit));
-      }
-
-      ctx.setState({
-        ...state,
-        receivedBitsIds: stringIds,
-        receivedBits: bits,
-      });
-    }
+    ctx.setState({
+      ...state,
+      receivedBits: action.receivedBits,
+    });
   }
 
   // Далее селекторы
 
   @Selector()
-  static receivedBits(state: HomeStateModel): Bit[] {
-    return state.receivedBits;
+  static receivedBitsIds(state: HomeStateModel): String[] {
+    return state.receivedBitsIds;
   }
 
   @Selector()
   static receivedBitsQuantity(state: HomeStateModel): number {
-    return state.receivedBits.length;
+    return state.receivedBitsIds.length;
   }
 
   @Selector()
-  static sentBits(state: HomeStateModel): Bit[] {
-    return state.sentBits;
+  static sentBitsIds(state: HomeStateModel): string[] {
+    return state.sentBitsIds;
   }
 
   @Selector()
   static sentBitsQuantity(state: HomeStateModel): number {
-    return state.sentBits.length;
+    return state.sentBitsIds.length;
   }
 }

@@ -4,8 +4,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable, takeUntil } from 'rxjs';
 import { CoreState } from '../../../../core/state/core.state';
 import { TuiDestroyService } from '@taiga-ui/cdk';
-import { GetReceivedBits } from '../../store/home.actions';
-import { Bit } from '../../../../core/models/bit.model';
+import { GetReceivedBitsIds } from '../../store/home.actions';
 
 @Component({
   selector: 'sw-received-bits',
@@ -15,7 +14,7 @@ import { Bit } from '../../../../core/models/bit.model';
   providers: [TuiDestroyService],
 })
 export class ReceivedBitsComponent implements OnInit {
-  @Select(HomeState.receivedBits) bits$: Observable<Bit[]>;
+  @Select(HomeState.receivedBitsIds) bitsIds$: Observable<string[]>;
   @Select(CoreState.activeWalletAddress)
   activeWalletAddress$: Observable<string>;
 
@@ -27,6 +26,6 @@ export class ReceivedBitsComponent implements OnInit {
   ngOnInit(): void {
     this.activeWalletAddress$
       .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this.store.dispatch(new GetReceivedBits()));
+      .subscribe(() => this.store.dispatch(new GetReceivedBitsIds()));
   }
 }

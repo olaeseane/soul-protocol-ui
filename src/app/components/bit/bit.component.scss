@@ -21,6 +21,19 @@
     overflow: hidden;
     font-weight: 600;
     background: var(--sw-primary);
+    cursor: pointer;
+  }
+
+  .tui-island_size_s {
+    padding: 8px;
+    border-radius: 0;
+  }
+  .hint {
+    font: var(--tui-font-text-s);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 600;
   }
 
   &__params {

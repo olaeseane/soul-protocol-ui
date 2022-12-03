@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import {
   FAMILIARITY_LIST,
   LIKING_LIST,
@@ -28,12 +28,12 @@ export interface MintBitsParams {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SendBitsComponent implements OnInit {
-  readonly bitForm = new FormGroup({
-    to: new FormControl(``, Validators.required),
-    familiarity: new FormControl(null, Validators.required),
-    liking: new FormControl(null, Validators.required),
-    solidity: new FormControl(null, Validators.required),
-    shine: new FormControl('shine', Validators.required),
+  readonly bitForm = new UntypedFormGroup({
+    to: new UntypedFormControl(``, Validators.required),
+    familiarity: new UntypedFormControl(null, Validators.required),
+    liking: new UntypedFormControl(null, Validators.required),
+    solidity: new UntypedFormControl(null, Validators.required),
+    shine: new UntypedFormControl('shine', Validators.required),
   });
 
   familiarityList = FAMILIARITY_LIST;

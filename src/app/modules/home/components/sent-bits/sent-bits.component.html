@@ -1,5 +1,12 @@
 <div class="sent-bits">
   <div class="sent-bits__filters">ФИЛЬТРЫ</div>
 
-  <div class="sent-bits__list"></div>
+  <div class="sent-bits__list">
+    <sw-bit
+      class="bit"
+      *ngFor="let bitsId of bitsIds$ | async"
+      [bitId]="bitsId"
+      type="sent"
+    ></sw-bit>
+  </div>
 </div>

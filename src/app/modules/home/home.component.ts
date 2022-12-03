@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Web3Service } from '../../core/services/web3.service';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { TuiInputComponent } from '@taiga-ui/kit';
 import { HomeService } from './services/home.service';
 import { Select, Store } from '@ngxs/store';
@@ -16,7 +16,7 @@ import { SetActiveWalletAddress } from '../../core/state/core.actions';
 })
 export class HomeComponent implements OnInit {
   @Select(CoreState.myWalletAddress) myWalletAddress$: Observable<string>;
-  search = new FormControl(null);
+  search = new UntypedFormControl(null);
 
   constructor(
     private readonly web3Service: Web3Service,

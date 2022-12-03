@@ -5,16 +5,16 @@ import { Observable, takeUntil } from 'rxjs';
 import { CoreState } from '../../../../core/state/core.state';
 import { GetSentBitsIds } from '../../store/home.actions';
 import { TuiDestroyService } from '@taiga-ui/cdk';
-import { Bit } from '../../../../core/models/bit.model';
 
 @Component({
   selector: 'sw-sent-bits',
   templateUrl: './sent-bits.component.html',
   styleUrls: ['./sent-bits.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [TuiDestroyService],
 })
 export class SentBitsComponent implements OnInit {
-  @Select(HomeState.sentBits) bits$: Observable<Bit[]>;
+  @Select(HomeState.sentBitsIds) bitsIds$: Observable<string[]>;
   @Select(CoreState.activeWalletAddress)
   activeWalletAddress$: Observable<string>;
 
@@ -26,6 +26,6 @@ export class SentBitsComponent implements OnInit {
   ngOnInit(): void {
     this.activeWalletAddress$
       .pipe(takeUntil(this.destroy$))
-      .subscribe((address) => this.store.dispatch(new GetSentBitsIds()));
+      .subscribe(() => this.store.dispatch(new GetSentBitsIds()));
   }
 }
